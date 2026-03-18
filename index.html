@@ -902,6 +902,44 @@
     font-weight: 400;
   }
 
+  /* ── INTRO SECTION (replaces photo section) ── */
+  .intro-section {
+    background: var(--warm-white);
+    padding: 100px 80px;
+  }
+
+  .intro-inner {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .intro-inner h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 3vw, 42px);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin: 16px 0 32px;
+  }
+
+  .intro-inner h2 em { font-style: italic; color: var(--green); }
+
+  .intro-body {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .intro-body p {
+    font-size: 16px;
+    color: var(--mid);
+    line-height: 1.8;
+    font-weight: 300;
+  }
+
+  .intro-body p strong { font-weight: 500; color: var(--ink); }
+
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
@@ -912,18 +950,17 @@
   @media (max-width: 900px) {
     .nav { padding: 16px 40px; }
     .nav-links { display: none; }
+    .nav-cta { padding: 10px 16px; font-size: 10px; }
     .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 80px; }
-    .hero-left { padding: 60px 40px; min-height: 60vh; }
+    .hero-left { padding: 60px 40px; min-height: auto; }
     .hero-right { padding: 60px 40px; }
-    .positioning, .story, .testimonials { padding: 80px 40px; }
+    .positioning, .story { padding: 80px 40px; }
     .pillars { padding: 80px 40px; }
     .pillars-grid { grid-template-columns: 1fr 1fr; }
-    .photo-section { grid-template-columns: 1fr; padding: 80px 40px; gap: 48px; }
-    .photo-placeholder { aspect-ratio: 4/3; }
+    .intro-section { padding: 80px 40px; }
     .highlight { padding: 80px 40px 48px; }
     .credentials { padding: 32px 40px 80px; }
     .credentials-grid { grid-template-columns: 1fr 1fr; }
-    .testimonials-grid { grid-template-columns: 1fr; }
     .stats-grid { grid-template-columns: 1fr 1fr; }
     .stat-teaser { grid-template-columns: 1fr 1fr; }
     .footer-cta { grid-template-columns: 1fr; gap: 48px; padding: 80px 40px; }
@@ -931,13 +968,23 @@
   }
 
   @media (max-width: 580px) {
-    .nav { padding: 16px 24px; }
+    .nav { padding: 14px 20px; }
+    .nav-cta { padding: 8px 14px; font-size: 10px; letter-spacing: 0.12em; }
+    .logo-text { font-size: 11px; letter-spacing: 0.12em; }
+    .logo-mark { width: 36px; height: 36px; font-size: 18px; }
     .hero-left, .hero-right { padding: 48px 28px; }
     .pillars-grid { grid-template-columns: 1fr; }
-    .credentials-grid { grid-template-columns: 1fr; }
+    .credentials-grid { grid-template-columns: 1fr 1fr; }
+    .stats-grid { grid-template-columns: 1fr 1fr; }
+    .stat-teaser { grid-template-columns: 1fr 1fr; }
+    .cta-buttons { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .positioning, .story, .pillars, .intro-section, .highlight, .credentials, .philosophy, .footer-cta { padding: 60px 28px; }
+  }
+
+  @media (max-width: 400px) {
     .stats-grid { grid-template-columns: 1fr; }
     .stat-teaser { grid-template-columns: 1fr; }
-    .positioning, .story, .pillars, .photo-section, .highlight, .credentials, .testimonials, .philosophy, .footer-cta { padding: 60px 28px; }
+    .credentials-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -1044,20 +1091,16 @@
   </div>
 </section>
 
-<!-- ── PHOTO / INTRO ── -->
-<section class="photo-section" id="about">
-  <div class="photo-placeholder">
-    <div class="photo-placeholder-icon">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6b6560" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
-    </div>
-    <p>Photo coming soon</p>
-  </div>
-  <div class="photo-content">
+<!-- ── INTRO ── -->
+<section class="intro-section" id="about">
+  <div class="intro-inner">
     <div class="section-label">The person behind the work</div>
     <h2>Fast. Serious.<br><em>Genuinely human.</em></h2>
-    <p>Buffy Howard holds a <strong>Ph.D. in Leadership Studies</strong> and an <strong>MBA</strong>, but her real education happened in the field — inside failing organizations, fractured teams, and regulatory crises where the stakes were people's livelihoods and patients' care. She has also been on the other side of the table: as the owner and operator of a successful Adult Family Home in Washington State, she knows what it feels like to sign the checks, manage the staff, and be accountable for everything.</p>
-    <p>She has been described as fast, serious, down to earth, and fun. She brings an energy into a room that makes people believe things can actually get better — and then she proves it. She is not a report writer. She is not a slideshow consultant. She walks in, takes charge, and stays until the job is done.</p>
-    <p>Based in Tacoma, Washington, Buffy works with a small number of organizations at a time, going all in on each one until the crisis is resolved and the foundation is solid. Outside of work she is a competitive powerlifter, an avid traveler across 15 countries, and speaks conversational Khmer (Cambodian).</p>
+    <div class="intro-body">
+      <p>Buffy Howard holds a <strong>Ph.D. in Leadership Studies</strong> and an <strong>MBA</strong>, but her real education happened in the field — inside failing organizations, fractured teams, and regulatory crises where the stakes were people's livelihoods and patients' care. She has also been on the other side of the table: as the owner and operator of a successful Adult Family Home in Washington State, she knows what it feels like to sign the checks, manage the staff, and be accountable for everything.</p>
+      <p>She has been described as fast, serious, down to earth, and fun. She brings an energy into a room that makes people believe things can actually get better — and then she proves it. She is not a report writer. She is not a slideshow consultant. She walks in, takes charge, and stays until the job is done.</p>
+      <p>Based in Tacoma, Washington, Buffy works with a small number of organizations at a time, going all in on each one until the crisis is resolved and the foundation is solid. Outside of work she is a competitive powerlifter, an avid traveler across 15 countries, and speaks conversational Khmer (Cambodian).</p>
+    </div>
   </div>
 </section>
 
@@ -1160,23 +1203,7 @@
   </div>
 </section>
 
-<!-- ── TESTIMONIALS ── -->
-<section class="testimonials">
-  <div class="testimonials-inner">
-    <div class="testimonials-eyebrow">What people say</div>
-    <div class="testimonials-grid">
-      <div class="testimonial-placeholder">
-        <p>Testimonial coming soon</p>
-      </div>
-      <div class="testimonial-placeholder">
-        <p>Testimonial coming soon</p>
-      </div>
-      <div class="testimonial-placeholder">
-        <p>Testimonial coming soon</p>
-      </div>
-    </div>
-  </div>
-</section>
+
 
 <!-- ── PHILOSOPHY ── -->
 <section class="philosophy">
@@ -1197,4 +1224,10 @@
         <a href="https://calendly.com/hello-callbuffy/30min" class="cta-btn-green" target="_blank" rel="noopener noreferrer">Book a Call &nbsp;→</a>
       <span class="cta-or">or</span>
       <a href="mailto:hello@callbuffy.com" class="cta-btn-outline">Tell Us What's Happening &nbsp;→</a>
-    
+    </div>
+    <p class="footer-note">hello@callbuffy.com &nbsp;·&nbsp; BuffyHoward.com</p>
+  </div>
+</section>
+
+</body>
+</html>
