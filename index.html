@@ -81,6 +81,7 @@
     text-transform: uppercase;
     color: var(--rule);
     font-weight: 400;
+    white-space: nowrap;
   }
 
   .nav-links {
@@ -97,6 +98,7 @@
     text-decoration: none;
     font-weight: 400;
     transition: color 0.2s ease;
+    white-space: nowrap;
   }
 
   .nav-link:hover { color: var(--green-light); }
@@ -950,6 +952,15 @@
   }
 
   /* ── RESPONSIVE ── */
+
+  /* Tight desktop — hide subtitle, compress nav spacing */
+  @media (max-width: 1200px) {
+    .nav { padding: 20px 40px; }
+    .nav-links { gap: 24px; }
+    .logo-subtitle { display: none; }
+    .logo-text { font-size: 13px; letter-spacing: 0.15em; }
+  }
+
   @media (max-width: 900px) {
     .nav { padding: 16px 40px; }
     .nav-links { display: none; }
@@ -973,8 +984,7 @@
   @media (max-width: 580px) {
     .nav { padding: 14px 20px; }
     .nav-cta { padding: 8px 14px; font-size: 10px; letter-spacing: 0.12em; }
-    .logo-text { font-size: 12px; letter-spacing: 0.15em; }
-    .logo-subtitle { display: none; }
+    .logo-text { font-size: 11px; letter-spacing: 0.12em; }
     .logo-mark { width: 36px; height: 36px; font-size: 18px; }
     .hero-left, .hero-right { padding: 48px 28px; }
     .pillars-grid { grid-template-columns: 1fr; }
