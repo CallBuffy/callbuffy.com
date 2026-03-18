@@ -779,7 +779,7 @@
     font-size: 11px;
     letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.6);
+    color: rgba(255,255,255,0.8);
     font-weight: 500;
     margin-bottom: 32px;
   }
@@ -800,7 +800,7 @@
     font-size: 12px;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.55);
+    color: rgba(255,255,255,0.8);
     font-weight: 400;
   }
 
@@ -865,7 +865,7 @@
     font-size: 11px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.5);
     font-weight: 400;
   }
 
@@ -957,10 +957,91 @@
 
   .intro-body p strong { font-weight: 500; color: var(--ink); }
 
+  /* ── SKIP LINK ── */
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 16px;
+    background: var(--green);
+    color: var(--warm-white);
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    z-index: 200;
+    transition: top 0.2s;
+    white-space: nowrap;
+  }
+  .skip-link:focus { top: 16px; }
+
+  /* ── FOCUS STYLES ── */
+  :focus-visible {
+    outline: 2px solid var(--green-light);
+    outline-offset: 3px;
+  }
+
+  /* ── HAMBURGER ── */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    margin-left: 12px;
+    flex-shrink: 0;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--warm-white);
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    transform-origin: center;
+  }
+  .nav-hamburger[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .nav-hamburger[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+  }
+  .nav-hamburger[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+  .nav-links.nav-open {
+    display: flex !important;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--ink);
+    padding: 24px 40px 32px;
+    gap: 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    z-index: 49;
+  }
+  .nav-links.nav-open .nav-link {
+    font-size: 13px;
+    letter-spacing: 0.15em;
+  }
+
   /* ── ANIMATIONS ── */
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
     to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── REDUCED MOTION ── */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .scene-text, .main-headline, .hero-bottom, .crisis-list, .cta-block, .stat-teaser {
+      opacity: 1;
+      animation: none;
+    }
+    * { transition-duration: 0.01ms !important; }
   }
 
   /* ── RESPONSIVE ── */
@@ -976,6 +1057,7 @@
   @media (max-width: 900px) {
     .nav { padding: 16px 40px; }
     .nav-links { display: none; }
+    .nav-hamburger { display: flex; }
     .nav-cta { padding: 10px 16px; font-size: 10px; }
     .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 80px; }
     .hero-left { padding: 60px 40px; min-height: auto; }
@@ -1016,20 +1098,29 @@
 </head>
 <body>
 
+<a href="#main-content" class="skip-link">Skip to main content</a>
+
 <!-- ── NAV ── -->
-<nav class="nav">
-  <a href="#home" class="nav-brand">
-    <div class="logo-mark">B</div>
+<nav class="nav" aria-label="Main navigation">
+  <a href="#home" class="nav-brand" aria-label="Buffy Howard — home">
+    <div class="logo-mark" aria-hidden="true">B</div>
     <span class="logo-text">Buffy Howard<span class="logo-subtitle"> &nbsp;·&nbsp; Turnaround Specialist</span></span>
   </a>
-  <div class="nav-links">
+  <div class="nav-links" id="mobile-nav">
     <a href="#what-we-fix" class="nav-link">What Gets Fixed</a>
     <a href="#about" class="nav-link">About</a>
     <a href="#results" class="nav-link">Results</a>
     <a href="#contact" class="nav-link">Contact</a>
   </div>
-  <a href="mailto:hello@callbuffy.com" class="nav-cta">Get In Touch &nbsp;→</a>
+  <div style="display:flex;align-items:center;gap:8px;">
+    <button class="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="mailto:hello@callbuffy.com" class="nav-cta">Get In Touch &nbsp;→</a>
+  </div>
 </nav>
+
+<main id="main-content">
 
 <!-- ── HERO ── -->
 <section class="hero" id="home">
@@ -1094,22 +1185,22 @@
     <div class="section-label">What gets fixed</div>
     <div class="pillars-grid">
       <div class="pillar">
-        <div class="pillar-num">◆</div>
+        <div class="pillar-num" aria-hidden="true">◆</div>
         <div class="pillar-title">Financial Turnaround</div>
         <p class="pillar-body">Auditing revenue, billing practices, collection rates, and scheduling utilization to find what's being left on the table — then cutting expenses with precision without cutting the ability to deliver.</p>
       </div>
       <div class="pillar">
-        <div class="pillar-num">◆</div>
+        <div class="pillar-num" aria-hidden="true">◆</div>
         <div class="pillar-title">Operational Transformation</div>
         <p class="pillar-body">Identifying bottlenecks, redundancies, and automation opportunities across every department — then rebuilding workflows until the whole organization runs efficiently.</p>
       </div>
       <div class="pillar">
-        <div class="pillar-num">◆</div>
+        <div class="pillar-num" aria-hidden="true">◆</div>
         <div class="pillar-title">Culture Revival</div>
         <p class="pillar-body">Listening first — to the board, the executives, and every level of staff — then building the right channels so people feel heard, valued, and invested in the outcome.</p>
       </div>
       <div class="pillar">
-        <div class="pillar-num">◆</div>
+        <div class="pillar-num" aria-hidden="true">◆</div>
         <div class="pillar-title">Regulatory Compliance</div>
         <p class="pillar-body">Reviewing inspection history, assessing current compliance gaps, and building a full preparation system for the next survey — because without your license, nothing else matters.</p>
       </div>
@@ -1181,47 +1272,47 @@
     <div class="section-label">Credentials and recognition</div>
     <div class="credentials-grid">
       <div class="credential-item">
-        <div class="credential-icon">◆</div>
+        <div class="credential-icon" aria-hidden="true">◆</div>
         <div class="credential-title">Ph.D., Leadership Studies</div>
         <p class="credential-body">St. Martin's University, Lacey, WA. Dissertation: Leadership, Equity, and Organizational Culture.</p>
       </div>
       <div class="credential-item">
-        <div class="credential-icon">◆</div>
+        <div class="credential-icon" aria-hidden="true">◆</div>
         <div class="credential-title">Master of Business Administration</div>
         <p class="credential-body">University of Phoenix, Seattle, WA.</p>
       </div>
       <div class="credential-item">
-        <div class="credential-icon">◆</div>
+        <div class="credential-icon" aria-hidden="true">◆</div>
         <div class="credential-title">Bachelor of Arts, English</div>
         <p class="credential-body">University of Puget Sound, Tacoma, WA.</p>
       </div>
       <div class="credential-item">
-        <div class="credential-icon">◆</div>
+        <div class="credential-icon" aria-hidden="true">◆</div>
         <div class="credential-title">Baldrige Bronze National Quality Award</div>
         <p class="credential-body">American Health Care Association, 2011. One of the most prestigious quality recognitions in healthcare operations.</p>
       </div>
       <div class="credential-item">
-        <div class="credential-icon">◆</div>
+        <div class="credential-icon" aria-hidden="true">◆</div>
         <div class="credential-title">School of Business Advisory Board</div>
         <p class="credential-body">St. Martin's University, 2025 to present.</p>
       </div>
       <div class="credential-item">
-        <div class="credential-icon">◆</div>
+        <div class="credential-icon" aria-hidden="true">◆</div>
         <div class="credential-title">Governor-Appointed Chapter Governor</div>
         <p class="credential-body">Washington Health Care Association, 2013. Appointed by the Governor of Washington State.</p>
       </div>
       <div class="credential-item">
-        <div class="credential-icon">◆</div>
+        <div class="credential-icon" aria-hidden="true">◆</div>
         <div class="credential-title">MBA Instructor</div>
         <p class="credential-body">Teaches Health Care Policy and Regulation at St. Martin's University, Lacey, WA.</p>
       </div>
       <div class="credential-item">
-        <div class="credential-icon">◆</div>
+        <div class="credential-icon" aria-hidden="true">◆</div>
         <div class="credential-title">Speaker and Trainer</div>
         <p class="credential-body">Extensive experience delivering leadership training, management development, and keynote presentations.</p>
       </div>
       <div class="credential-item">
-        <div class="credential-icon">◆</div>
+        <div class="credential-icon" aria-hidden="true">◆</div>
         <div class="credential-title">Boss of the Year</div>
         <p class="credential-body">Honorable Mention, Thurston County Chamber of Commerce, 2023.</p>
       </div>
@@ -1254,9 +1345,40 @@
   </div>
 </section>
 
+</main>
+
 <footer class="site-footer">
   <p>&copy; 2026 Buffy Howard. All rights reserved.</p>
 </footer>
 
+<script>
+  const hamburger = document.querySelector('.nav-hamburger');
+  const mobileNav = document.getElementById('mobile-nav');
+
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileNav.classList.toggle('nav-open');
+    hamburger.setAttribute('aria-expanded', isOpen);
+    hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+  });
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileNav.classList.contains('nav-open')) {
+      mobileNav.classList.remove('nav-open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'Open menu');
+      hamburger.focus();
+    }
+  });
+
+  // Close when a nav link is clicked
+  mobileNav.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileNav.classList.remove('nav-open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'Open menu');
+    });
+  });
+</script>
 </body>
 </html>
