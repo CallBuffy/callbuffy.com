@@ -506,7 +506,7 @@
 
   .photo-content p {
     font-size: 16px;
-    color: var(--mid);
+    color: var(--ink);
     line-height: 1.8;
     font-weight: 300;
   }
@@ -585,7 +585,7 @@
 
   /* ── HIGHLIGHT REEL ── */
   .highlight {
-    background: var(--warm-white);
+    background: var(--ink);
     padding: 120px 80px 48px;
   }
 
@@ -599,13 +599,13 @@
     font-weight: 900;
     line-height: 1.1;
     letter-spacing: -0.02em;
-    color: var(--ink);
+    color: var(--warm-white);
     margin-top: 16px;
   }
 
   .highlight-intro {
     font-size: 16px;
-    color: var(--mid);
+    color: rgba(245,240,232,0.75);
     line-height: 1.8;
     font-weight: 300;
     border-left: 2px solid var(--green);
@@ -622,7 +622,7 @@
   }
 
   .stat-card {
-    background: var(--cream);
+    background: rgba(255,255,255,0.04);
     padding: 36px 32px;
   }
 
@@ -630,7 +630,7 @@
     font-family: 'Playfair Display', serif;
     font-size: clamp(36px, 4vw, 52px);
     font-weight: 900;
-    color: var(--green);
+    color: var(--green-light);
     line-height: 1;
     margin-bottom: 12px;
     letter-spacing: -0.02em;
@@ -638,7 +638,7 @@
 
   .stat-label {
     font-size: 13px;
-    color: var(--mid);
+    color: rgba(245,240,232,0.75);
     line-height: 1.5;
     font-weight: 300;
   }
@@ -699,10 +699,9 @@
   .testimonials {
     background: var(--cream);
     padding: 100px 80px;
-    text-align: center;
   }
 
-  .testimonials-inner { max-width: 780px; margin: 0 auto; }
+  .testimonials-inner { max-width: 1000px; margin: 0 auto; }
 
   .testimonials-eyebrow {
     font-size: 20px;
@@ -713,60 +712,49 @@
     margin-bottom: 48px;
     display: flex;
     align-items: center;
-    justify-content: center;
     gap: 16px;
   }
 
   .testimonials-eyebrow::before { content: ''; width: 48px; height: 2px; background: var(--green); }
-  .testimonials-eyebrow::after { content: ''; width: 48px; height: 2px; background: var(--green); }
 
-  .testimonial-carousel { position: relative; }
+  .testimonials-list { display: flex; flex-direction: column; }
 
-  .testimonial-slides { position: relative; min-height: 200px; }
-
-  .testimonial-slide {
-    display: none;
-    animation: fadeUp 0.5s ease forwards;
+  .testimonial-row {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 48px;
+    padding: 36px 0;
+    border-top: 1px solid var(--rule);
+    align-items: start;
   }
 
-  .testimonial-slide.active { display: block; }
+  .testimonial-row:last-child { border-bottom: 1px solid var(--rule); }
 
-  .testimonial-quote {
+  .testimonial-name {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(18px, 2vw, 24px);
-    font-style: normal;
-    font-weight: 400;
+    font-size: 16px;
+    font-weight: 700;
     color: var(--ink);
-    line-height: 1.65;
-    margin-bottom: 32px;
+    margin-bottom: 6px;
+    line-height: 1.2;
   }
 
-  .testimonial-attr {
-    font-size: 12px;
-    letter-spacing: 0.18em;
+  .testimonial-title {
+    font-size: 11px;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--green);
     font-weight: 500;
+    line-height: 1.4;
   }
 
-  .testimonial-dots {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 40px;
+  .testimonial-quote {
+    font-size: 15px;
+    color: var(--ink);
+    line-height: 1.75;
+    font-weight: 300;
+    font-style: normal;
   }
-
-  .testimonial-dot {
-    width: 10px;
-    height: 10px;
-    background: var(--rule);
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    transition: background 0.2s ease;
-  }
-
-  .testimonial-dot.active { background: var(--green); }
 
   /* ── PHILOSOPHY ── */
   .philosophy {
@@ -829,7 +817,7 @@
 
   .footer-left p {
     font-size: 15px;
-    color: var(--mid);
+    color: var(--ink);
     line-height: 1.7;
     font-weight: 300;
     max-width: 420px;
@@ -950,7 +938,7 @@
 
   .intro-body p {
     font-size: 16px;
-    color: var(--mid);
+    color: var(--ink);
     line-height: 1.8;
     font-weight: 300;
   }
@@ -1220,27 +1208,11 @@
   </div>
 </section>
 
-<!-- ── ORIGIN STORY ── -->
-<section class="story">
-  <div class="story-inner">
-    <div class="story-eyebrow">The origin story</div>
-    <p class="story-pull">
-      It started in junior high school — a teenager volunteering at a nursing home in Bethlehem, PA, drawn to the work before she even understood why. Her first job out of college was at a nursing home in Washington State, this one in the middle of a regulatory crisis. They called it the War Room — <span>giant Post-it notes covering every wall, citations everywhere, everyone scrambling.</span> Buffy walked in, looked around, and felt something click. This was exactly the kind of work she was meant to do.
-    </p>
-    <div class="story-body">
-      <p>She was right. She got her Nursing Home Administrator license, took over her first facility — poorly run, losing money, unhappy staff, poor care — and turned it around. Then she did it again. And again. For fifteen years at the same company, she was the person they moved from facility to facility once the work was done. Fix one, move to the next.</p>
-      <p>That pattern followed her everywhere she went. As a Regional Vice President at a national urgent care and workers' compensation company — her first move outside of long-term care — she inherited a failing multi-state region and turned it around, exceeding EBITDA targets by $14 million in a single year. At a five-clinic radiation oncology practice in Washington State, she stepped into a fragmented organization and built the infrastructure it had never had — centralized HR, compliance systems, and operational alignment across all five clinics — while improving culture, patient experience, and financial performance simultaneously. At a multi-site ophthalmology practice, she took the CEO seat, identified major revenue cycle failures within 30 days, and delivered a cost reduction of 25% and revenue growth of 10%.</p>
-      <p>Sprinkled in was a stint leading value-based care initiatives — not a turnaround, but an experience that gave her deep expertise in alternative payment models, Medicare strategy, and payer dynamics that is indispensable for any healthcare organization navigating today's reimbursement landscape.</p>
-      <p>The throughline across 25 years and every organization: she didn't go looking for broken things. Broken things found her. And she has never once left one the way she found it.</p>
-    </div>
-  </div>
-</section>
-
 <!-- ── RESULTS ── -->
 <section class="highlight" id="results">
   <div class="highlight-inner">
     <div class="highlight-header">
-      <div class="section-label">The results speak for themselves</div>
+      <div class="section-label" style="color: var(--green-light);">The results speak for themselves</div>
       <h2>25 years of proof.</h2>
     </div>
     <p class="highlight-intro">Across every organization — urgent care, oncology, ophthalmology, long-term care — the pattern is the same. Walk in, take charge, fix what's broken, and leave something that lasts.</p>
@@ -1261,6 +1233,52 @@
         <div class="stat-num">$70M+</div>
         <div class="stat-label">Largest annual budget under direct management across multi-site long-term care operations</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS ── -->
+<section class="testimonials">
+  <div class="testimonials-inner">
+    <div class="testimonials-eyebrow">What people say</div>
+    <div class="testimonials-list">
+      <div class="testimonial-row">
+        <div class="testimonial-left">
+          <p class="testimonial-name">Tom Turmell</p>
+          <p class="testimonial-title">Managing Director, TMT Capital</p>
+        </div>
+        <p class="testimonial-quote">"One of the keys to Buffy's success is her ability to build trust and inspire people even in the most stressful and high-stakes situations. I have watched her walk into difficult and complex situations and create a positive, functional environment where the team performed and delivered results. Not everyone can do that. It is a rare skill — she has it."</p>
+      </div>
+      <div class="testimonial-row">
+        <div class="testimonial-left">
+          <p class="testimonial-name">Sherif Hanna</p>
+          <p class="testimonial-title">Chief Executive Officer, HRC Fertility</p>
+        </div>
+        <p class="testimonial-quote">"You don't come across a dynamic leader like Buffy often and when you do, you want them to be a part of your organization quickly. Buffy took a struggling region and drastically improved the quality and financial outcomes — taking a region that was ranked last to first within the first year. She has all the qualities you would want in a leader."</p>
+      </div>
+      <div class="testimonial-row">
+        <div class="testimonial-left">
+          <p class="testimonial-name">Cheryl Moses, MSN</p>
+          <p class="testimonial-title">Chief Nursing Officer</p>
+        </div>
+        <p class="testimonial-quote">"Buffy has an energy that makes people want to show up and perform. During my time working with her, our team consistently surpassed every goal set before us, including achieving the best health inspection survey in the long term care industry in one of the highest cited regions in Washington State. Of the many leaders I have worked for, Buffy has been the most effective I have ever had the opportunity to work with."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── ORIGIN STORY ── -->
+<section class="story">
+  <div class="story-inner">
+    <div class="story-eyebrow">The origin story</div>
+    <p class="story-pull">
+      It started in junior high school — a teenager volunteering at a nursing home in Bethlehem, PA, drawn to the work before she even understood why. Her first job out of college was at a nursing home in Washington State, this one in the middle of a regulatory crisis. They called it the War Room — <span>giant Post-it notes covering every wall, citations everywhere, everyone scrambling.</span> Buffy walked in, looked around, and felt something click. This was exactly the kind of work she was meant to do.
+    </p>
+    <div class="story-body">
+      <p>She was right. She got her Nursing Home Administrator license, took over her first facility — poorly run, losing money, unhappy staff, poor care — and turned it around. Then she did it again. And again. For fifteen years at the same company, she was the person they moved from facility to facility once the work was done. Fix one, move to the next.</p>
+      <p>That pattern followed her everywhere she went. As a Regional Vice President at a national urgent care and workers' compensation company — her first move outside of long-term care — she inherited a failing multi-state region and turned it around, exceeding EBITDA targets by $14 million in a single year. At a five-clinic radiation oncology practice in Washington State, she stepped into a fragmented organization and built the infrastructure it had never had — centralized HR, compliance systems, and operational alignment across all five clinics — while improving culture, patient experience, and financial performance simultaneously. At a multi-site ophthalmology practice, she took the CEO seat, identified major revenue cycle failures within 30 days, and delivered a cost reduction of 25% and revenue growth of 10%.</p>
+      <p>Sprinkled in was a stint leading value-based care initiatives — not a turnaround, but an experience that gave her deep expertise in alternative payment models, Medicare strategy, and payer dynamics that is indispensable for any healthcare organization navigating today's reimbursement landscape.</p>
+      <p>The throughline across 25 years and every organization: she didn't go looking for broken things. Broken things found her. And she has never once left one the way she found it.</p>
     </div>
   </div>
 </section>
@@ -1314,34 +1332,6 @@
   </div>
 </section>
 
-<!-- ── TESTIMONIALS ── -->
-<section class="testimonials">
-  <div class="testimonials-inner">
-    <div class="testimonials-eyebrow">What people say</div>
-    <div class="testimonial-carousel">
-      <div class="testimonial-slides">
-        <div class="testimonial-slide active">
-          <p class="testimonial-quote">"One of the keys to Buffy's success is her ability to build trust and inspire people even in the most stressful and high-stakes situations. I have watched her walk into difficult and complex situations and create a positive, functional environment where the team performed and delivered results. Not everyone can do that. It is a rare skill — she has it."</p>
-          <p class="testimonial-attr">Tom Turmell &nbsp;·&nbsp; Managing Director, TMT Capital</p>
-        </div>
-        <div class="testimonial-slide">
-          <p class="testimonial-quote">"You don't come across a dynamic leader like Buffy often and when you do, you want them to be a part of your organization quickly. Buffy took a struggling region and drastically improved the quality and financial outcomes — taking a region that was ranked last to first within the first year. She has all the qualities you would want in a leader."</p>
-          <p class="testimonial-attr">Sherif Hanna &nbsp;·&nbsp; Chief Executive Officer, HRC Fertility</p>
-        </div>
-        <div class="testimonial-slide">
-          <p class="testimonial-quote">"Buffy has an energy that makes people want to show up and perform. During my time working with her, our team consistently surpassed every goal set before us, including achieving the best health inspection survey in the long term care industry in one of the highest cited regions in Washington State. Of the many leaders I have worked for, Buffy has been the most effective I have ever had the opportunity to work with."</p>
-          <p class="testimonial-attr">Cheryl Moses, MSN &nbsp;·&nbsp; Chief Nursing Officer</p>
-        </div>
-      </div>
-      <div class="testimonial-dots">
-        <button class="testimonial-dot active" aria-label="Testimonial 1"></button>
-        <button class="testimonial-dot" aria-label="Testimonial 2"></button>
-        <button class="testimonial-dot" aria-label="Testimonial 3"></button>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ── PHILOSOPHY ── -->
 <section class="philosophy">
   <p class="phil-label">Core Philosophy</p>
@@ -1372,36 +1362,6 @@
 </footer>
 
 <script>
-  // Testimonial carousel
-  const slides = document.querySelectorAll('.testimonial-slide');
-  const dots = document.querySelectorAll('.testimonial-dot');
-  let current = 0;
-  let autoplay;
-
-  function showSlide(index) {
-    slides[current].classList.remove('active');
-    dots[current].classList.remove('active');
-    current = index;
-    slides[current].classList.add('active');
-    dots[current].classList.add('active');
-  }
-
-  dots.forEach((dot, i) => {
-    dot.addEventListener('click', () => {
-      clearInterval(autoplay);
-      showSlide(i);
-      startAutoplay();
-    });
-  });
-
-  function startAutoplay() {
-    autoplay = setInterval(() => {
-      showSlide((current + 1) % slides.length);
-    }, 6000);
-  }
-
-  if (slides.length) startAutoplay();
-
   // Hamburger menu
   const hamburger = document.querySelector('.nav-hamburger');
   const mobileNav = document.getElementById('mobile-nav');
