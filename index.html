@@ -467,22 +467,14 @@ margin-bottom: 48px;
 .section-label::before { content: ''; width: 48px; height: 2px; background: var(--green); }
 
 .pillars-grid {
-display: flex;
-flex-wrap: wrap;
+display: grid;
+grid-template-columns: repeat(6, 1fr);
 gap: 2px;
 }
 
-.pillars-grid .pillar {
-flex: 1 1 calc(33.333% - 2px);
-min-width: 200px;
-box-sizing: border-box;
-}
-
-.pillars-grid .pillar:nth-child(4),
-.pillars-grid .pillar:nth-child(5) {
-flex: 1 1 calc(50% - 2px);
-max-width: calc(33.333% - 2px);
-}
+.pillars-grid .pillar { grid-column: span 2; }
+.pillars-grid .pillar:nth-child(4) { grid-column: 2 / span 2; }
+.pillars-grid .pillar:nth-child(5) { grid-column: 4 / span 2; }
 
 .pillar {
 background: var(--warm-white);
@@ -754,7 +746,7 @@ padding: 32px 80px 80px;
 
 .credentials-grid {
 display: grid;
-grid-template-columns: repeat(4, 1fr);
+grid-template-columns: repeat(3, 1fr);
 gap: 2px;
 margin-top: 40px;
 }
@@ -1212,9 +1204,10 @@ html { scroll-behavior: auto; }
 .hero-photo-wrap img { height: 200px; }
 .positioning, .story { padding: 80px 40px; }
 .pillars { padding: 80px 40px; }
-.pillars-grid .pillar { flex: 1 1 calc(50% - 2px); max-width: 100%; }
-.pillars-grid .pillar:nth-child(4),
-.pillars-grid .pillar:nth-child(5) { flex: 1 1 calc(50% - 2px); max-width: 100%; }
+.pillars-grid { grid-template-columns: repeat(4, 1fr); }
+.pillars-grid .pillar { grid-column: span 2; }
+.pillars-grid .pillar:nth-child(4) { grid-column: span 2; }
+.pillars-grid .pillar:nth-child(5) { grid-column: span 2; }
 .intro-section { padding: 80px 40px; }
 .intro-inner { grid-template-columns: 1fr; gap: 40px; }
 .intro-photo::before { display: none; }
@@ -1239,9 +1232,10 @@ html { scroll-behavior: auto; }
 .hero-left, .hero-right { padding: 48px 28px; }
 .dual-cta { grid-template-columns: 1fr; }
 .dual-cta-divider { display: none; }
+.pillars-grid { grid-template-columns: 1fr 1fr; }
 .pillars-grid .pillar,
 .pillars-grid .pillar:nth-child(4),
-.pillars-grid .pillar:nth-child(5) { flex: 1 1 100%; max-width: 100%; }
+.pillars-grid .pillar:nth-child(5) { grid-column: span 1; }
 .credentials-grid { grid-template-columns: 1fr 1fr; }
 .stats-grid { grid-template-columns: 1fr 1fr; }
 .cta-buttons { flex-direction: column; align-items: flex-start; gap: 10px; }
